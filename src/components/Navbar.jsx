@@ -23,17 +23,20 @@ const Navbar = () => {
         setIsAudioPlaying((prev)=> !prev);
     }
 
-    const {Y: currentScrollY} = useWindowScroll();
+    const {y: currentScrollY} = useWindowScroll();
 
     useEffect(() => {
+        console.log(currentScrollY)
         if(currentScrollY === 0 ) {
             setIsNavbarVisible(true);
             navContainerRef.current.classList.remove('floating-nav');
         } else if(currentScrollY > lastScrollY) {
+            console.log("second")
             setIsNavbarVisible(false);
             navContainerRef.current.classList.add('floating-nav');
         }else if(currentScrollY < lastScrollY){
             setIsNavbarVisible(true);
+            console.log("third")
             navContainerRef.current.classList.add('floating-nav');
         }
         setLastScrollY(currentScrollY);
